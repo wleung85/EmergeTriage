@@ -1,0 +1,58 @@
+-- Databricks notebook source
+-- MAGIC %sql
+-- MAGIC CREATE TABLE Maryland_Hospital (id INT, 
+-- MAGIC                         Hospital STRING, 
+-- MAGIC                         Time FLOAT,
+-- MAGIC                         Zipcode INT);
+
+-- COMMAND ----------
+
+-- MAGIC %sql
+-- MAGIC INSERT INTO Maryland_Hospital values ('1', 'Adventist Healthcare Shady Grove Medical Center', '16', '20850');
+-- MAGIC INSERT INTO Maryland_Hospital values ('2', 'Adventist Healthcare Washingtone Adventist Hospital', '15', '20912');
+-- MAGIC INSERT INTO Maryland_Hospital values ('3', 'Anne Arundel Medical Center', '52', '21401');
+-- MAGIC INSERT INTO Maryland_Hospital values ('4', 'Atlantic General Hospital', '21', '21811');
+-- MAGIC INSERT INTO Maryland_Hospital values ('5', 'Bon Secours Hospital', '20', '21223');
+-- MAGIC INSERT INTO Maryland_Hospital values ('6', 'Calvert Memorial Hospital', '22', '20678');
+-- MAGIC INSERT INTO Maryland_Hospital values ('7', 'Caroll Hospital Center', '28', '21157');
+-- MAGIC INSERT INTO Maryland_Hospital values ('8', "Doctors' Community Hospital", '52', '20706');
+-- MAGIC INSERT INTO Maryland_Hospital values ('9', 'Edward Mccready Memorial Hospital', '10', '21817');
+-- MAGIC INSERT INTO Maryland_Hospital values ('10', 'Fort Washington Hospital', '43', '20744');
+-- MAGIC INSERT INTO Maryland_Hospital values ('11', 'Garrett County Memorial Hospital', '32', '21550');
+-- MAGIC INSERT INTO Maryland_Hospital values ('12', 'Greater Baltimore Medical Center', '61', '21204');
+-- MAGIC INSERT INTO Maryland_Hospital values ('13', 'Holy Cross Germantown Hospital', '35', '20876');
+-- MAGIC INSERT INTO Maryland_Hospital values ('14', 'Holy Cross Hospital', '69', '20910');
+-- MAGIC INSERT INTO Maryland_Hospital values ('15', 'Howard General County Hospital', '51', '21044');
+-- MAGIC INSERT INTO Maryland_Hospital values ('16', 'Johns Hopkins Bayview Medical Center', '57', '21224');
+-- MAGIC INSERT INTO Maryland_Hospital values ('17', 'Laurel Regional Medical Center', '54', '20707');
+-- MAGIC INSERT INTO Maryland_Hospital values ('18', 'Medstar Franklin Square Medical Center', '64', '21237');
+-- MAGIC INSERT INTO Maryland_Hospital values ('19', 'Medstar Good Samaritan Hospital', '51', '21239');
+-- MAGIC INSERT INTO Maryland_Hospital values ('20', 'Medstar Harbor Hospital', '41', '21225');
+-- MAGIC INSERT INTO Maryland_Hospital values ('21', 'Medstar Montgomery Medical Center', '24', '20832');
+-- MAGIC INSERT INTO Maryland_Hospital values ('22', "Medstar Saint Mary's Hospital", '52', '20650');
+-- MAGIC INSERT INTO Maryland_Hospital values ('23', 'Medstar Southerland Maryland Hospital Center', '117', '20735');
+-- MAGIC INSERT INTO Maryland_Hospital values ('24', 'Medstar Union Memorial Hospital', '48', '21218');
+-- MAGIC INSERT INTO Maryland_Hospital values ('25', 'Mercy Medical Center Inc', '37', '21202');
+-- MAGIC INSERT INTO Maryland_Hospital values ('26', 'Meritus Medical Center', '38', '21742');
+-- MAGIC INSERT INTO Maryland_Hospital values ('27', 'Northwest Hospital Center', '34', '21133');
+-- MAGIC INSERT INTO Maryland_Hospital values ('28', 'Peninsula Regional Medical Center', '37', '21801');
+-- MAGIC INSERT INTO Maryland_Hospital values ('29', 'Prince Georges Hospital Center', '36', '20785');
+-- MAGIC INSERT INTO Maryland_Hospital values ('30', 'Saint Agnes Hospital', '60', '21229');
+-- MAGIC INSERT INTO Maryland_Hospital values ('31', 'Sinai Hospital of Baltimore', '112', '21215');
+-- MAGIC INSERT INTO Maryland_Hospital values ('32', 'Suburban Hospital', '29', '20814');
+-- MAGIC INSERT INTO Maryland_Hospital values ('33', 'University Hospital of Cecil County', '38', '21921');
+-- MAGIC INSERT INTO Maryland_Hospital values ('34', 'University of Maryland Harford Memorial Hospital', '35', '21078');
+-- MAGIC INSERT INTO Maryland_Hospital values ('35', 'University of Maryland Medical Center', '60', '21201');
+-- MAGIC INSERT INTO Maryland_Hospital values ('36', 'University of Maryland St Joseph Medical Center', '84', '21204');
+-- MAGIC INSERT INTO Maryland_Hospital values ('37', 'University of Md Balto Washington Medical Center', '11', '21061');
+-- MAGIC INSERT INTO Maryland_Hospital values ('38', 'University of Md Charles Regional Medical Center', '33', '20646');
+-- MAGIC INSERT INTO Maryland_Hospital values ('39', 'University of Md Medical Center Midtown Campus', '79', '21201');
+-- MAGIC INSERT INTO Maryland_Hospital values ('40', 'University of Md Shore Medical Center at Easton', '22', '21601');
+-- MAGIC INSERT INTO Maryland_Hospital values ('41', 'University Of Md Shore Medical Ctr At Chestertown', '12', '21620');
+-- MAGIC INSERT INTO Maryland_Hospital values ('42', 'University Of M D Upper Chesapeake Medical Center', '66', '21014');
+-- MAGIC INSERT INTO Maryland_Hospital values ('43', 'Western Maryland Regional Medical Center', '34', '21502');
+
+-- COMMAND ----------
+
+-- MAGIC %sql
+-- MAGIC select * from Maryland_Hospital order by id asc
