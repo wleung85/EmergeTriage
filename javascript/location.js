@@ -1,4 +1,5 @@
-var x = document.getElementById("map");
+var map;
+var infowindow;
 window.onload = getLocation();
 
 function getLocation() {
@@ -11,17 +12,53 @@ function getLocation() {
 
 function showPosition(position) {
 	var myLatlng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
-     var myOptions = {
-         zoom: 12,
+    var myOptions = {
+         zoom: 13,
          center: myLatlng,
          mapTypeId: google.maps.MapTypeId.ROADMAP
          }
-      map = new google.maps.Map(document.getElementById("map"), myOptions);
+      map = new google.maps.Map(document.getElementById('map'), myOptions);
+      
+      infowindow = new google.maps.InfoWindow();
+
       var marker = new google.maps.Marker({
           position: myLatlng, 
           map: map,
-      title:"Fast marker"
+      title:"Current Location"
      });
+
+      var request = {
+      	location: myLatlng,
+      	radius: '500',
+      	type: ['hospital'],
+      	keyword: ['emergency room', 'hospital']
+      };
+
+      var service = new google.maps.places.PlacesService(map);
+      service.nearbySearch(request, callback);
+}
+
+function callback(results,status) {
+	if(status==google.maps.places.PlacesServiceStatus.OK){
+		for (var i = 0; i < results.length; i++){
+			var place = results[i];
+			createMarker(results[i]);
+		}
+	}
+}
+
+
+function createMarker(place) {
+  var placeLoc = place.geometry.location;
+  var marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location
+  });
+
+  google.maps.event.addListener(marker, 'click', function() {
+    infowindow.setContent(place.name);
+    infowindow.open(map, this);
+  });
 }
 
 function showError(error) {
