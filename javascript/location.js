@@ -13,6 +13,7 @@ function getLocation() {
 
 function showPosition(position) {
 	var myLatlng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+	
     var myOptions = {
          zoom: 13,
          center: myLatlng,
@@ -51,10 +52,24 @@ function callback(results,status) {
 
 function createMarker(place) {
   var placeLoc = place.geometry.location;
+  
+        var icon = {
+        url: place.icon,
+        size: new google.maps.Size(50, 50),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(15, 15),
+        scaledSize: new google.maps.Size(25, 25)
+      };
+	  
   var marker = new google.maps.Marker({
     map: map,
+	icon:icon,
+	title: place.name,
     position: place.geometry.location
   });
+  
+
+	  
 
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.setContent(place.name);
