@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script type="text/javascript" src="javascript/jquery-csv.js"></script> 
     </head>
     <body>
        <div class="row text-center">
@@ -25,18 +26,33 @@
     </body>
     <script>
     $(document).ready(function() {
-        $.get('resources/symptoms_index.csv', function(data) {
-            setSymptomList(data)}, 'text');
+        $.ajax({
+            type: "GET",
+            url: "resources/symptoms_index.csv",
+            dataType: "text",
+            success: function(data) {setSymptomList(data);}
+        });
     });
 
     function setSymptomList(data) {
-        var symptomsDiv = document.getElementById("symptomlist");
-        /*var symptomsList = '<form action=\"symptomcheck.php\" method=\"post\">';
-        for 
-        symptomsList += '</form>';*/
-        //symptomsDiv.innerHTML = symptomsList;
-        f
-        symptomsDiv.innerHTML = data;
+        var record_num = 2;  // or however many elements there are in each row
+        var allTextLines = data.split(/\r\n|\n/);
+        var text = [];
+
+        for (i = 0; i < allTextLines.length; i++) {
+            text[i] = allTextLines[i].split(',');
+        }
+        var x = document.getElementById("symptomlist");
+
+        var symptomhtml = "<form action=\"symptomcheck.php\" method=\"post\">";
+        for (i=1; i < allTextLines.length - 1; i++) {
+            symptomhtml += "<input type=\"checkbox\" name=\"symptom[]\" value=" + i + "> " +text[i][0] +"<br>";
+        }
+        symptomhtml += "<br><input type=\"submit\">";
+
+        x.innerHTML = symptomhtml;
+
+        console.log(allTextLines);
     }
     </script>
 </html>
