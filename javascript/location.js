@@ -1,5 +1,6 @@
 var map;
 var infowindow;
+var x = document.getElementById("demo");
 window.onload = getLocation();
 
 function getLocation() {

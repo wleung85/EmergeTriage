@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     </head>
@@ -15,26 +16,20 @@
             <p>Choose your symptoms:</p>
        </div>
        <!-- TODO: use CSV instead of hardcoding -->
-       <div class="row text-center">
-           <form action="/something.php">
-            Age:
-            <input type="text" name="age"><br><br>
-            Sex:<br>
-            <input type="radio" name="sex" value="male"> Male<br>
-            <input type="radio" name="sex" value="female"> Female<br><br>
-            Zip Code:<br>
-            <input type="text" name="zip"><br><br>
-            For how many days have you been experiencing symptoms?<br>
-            <input type="radio" name="condition_length" value="day"> Less than a day<br>
-            <input type="radio" name="condition_length" value="week"> More than a day, less than a week<br>
-            <input type="radio" name="condition_length" value="month"> More than a week, less than a month<br>
-            <input type="radio" name="condition_length" value="long"> More than a month<br><br>
-            Symptoms:<br>
-            <input type="checkbox" name="symptom" value="chest_pain"> Chest pain<br>
-            <input type="checkbox" name="symptom" value="shortness_of_breath"> Shortness of breath<br>
-            <input type="checkbox" name="symptom" value="chest_pain"> Chest pain<br>
+           <div class="container">
+            <form action="symptomcheck.php" method="post">
+                Symptoms:<br><br>
+                <input type="checkbox" name="symptom[]" value="chest_pain"> Chest pain<br>
+                <input type="checkbox" name="symptom[]" value="shortness_of_breath"> Shortness of breath<br>
+                <input type="checkbox" name="symptom[]" value="abdominal_pain"> Abdominal pains<br>
+                <input type="checkbox" name="symptom[]" value="nausea"> Nausea<br>
+                <input type="checkbox" name="symptom[]" value="diaarhea"> Diarrhea<br>
+                <input type="checkbox" name="symptom[]" value="constipation"> Constipation<br>
+                <input type="checkbox" name="symptom[]" value="cough"> Cough<br>
+                <input type="submit">
             </form>
-       </div>
+           </div>
+       
     </body>
 
 </html>
