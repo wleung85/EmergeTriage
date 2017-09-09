@@ -25,7 +25,18 @@
     </body>
     <script>
     $(document).ready(function() {
-        $("#symptomlist").html("Hello World");
+        $.get('resources/symptoms_index.csv', function(data) {
+            setSymptomList(data)}, 'text');
     });
+
+    function setSymptomList(data) {
+        var symptomsDiv = document.getElementById("symptomlist");
+        /*var symptomsList = '<form action=\"symptomcheck.php\" method=\"post\">';
+        for 
+        symptomsList += '</form>';*/
+        //symptomsDiv.innerHTML = symptomsList;
+        f
+        symptomsDiv.innerHTML = data;
+    }
     </script>
 </html>
