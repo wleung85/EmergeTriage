@@ -93,5 +93,3 @@ function showError(error) {
             break;
     }
 }
-
-
