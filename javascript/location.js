@@ -1,4 +1,4 @@
-var x = document.getElementById("demo");
+var x = document.getElementById("map");
 window.onload = getLocation();
 function getLocation() {
     if (navigator.geolocation) {
@@ -9,7 +9,16 @@ function getLocation() {
 }
 
 function showPosition(position) {
-	var latlon = position.coords.latitude + ',' + position.coords.longitude;
-	var img_url = "https://maps.googleapis.com/maps/staticmap?center="+latlon+"&zoom=15&size=400x400&key=AIzaSyCqSEnjvBcdSxPtrZP7wSkcCuiz8aPUdrE";
-	document.getElementById("demo").innerHTML = "<imgsrc='"+img_url+"'>";
+	var myLatlng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+     var myOptions = {
+         zoom: 4,
+         center: myLatlng,
+         mapTypeId: google.maps.MapTypeId.ROADMAP
+         }
+      map = new google.maps.Map(document.getElementById("map"), myOptions);
+      var marker = new google.maps.Marker({
+          position: myLatlng, 
+          map: map,
+      title:"Fast marker"
+     });
 }
