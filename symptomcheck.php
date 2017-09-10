@@ -22,11 +22,14 @@
     }
 
     if ($sum >= "3") {
-      echo("You fucked");
+      header('Location: high.html');
+      exit;
     } elseif ($sum > 1) {
-      echo("You might be fucked");
+      header('Location: medium.html');
+      exit;
     } else {
-      echo ("You ain't fucked");
+      header('Location: low.html');
+      exit;
     }
     
   }
