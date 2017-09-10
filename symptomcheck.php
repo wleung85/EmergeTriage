@@ -10,12 +10,25 @@
   else
   {
     $N = count($symptom);
+    $symptomarray = array_map('str_getcsv', file("resources/symptoms_index.csv"));
+    $sum = 0;
 
     for($i=0; $i < $N; $i++)
     {
-      echo($symptom[$i] . " ");
+      //Adding id instead of danger level
+      $sum += $symptomarray[$symptom[$i]][1];
+      echo($sum . " ");
+      //echo($symptom[$i] . " ");
     }
-    echo("You fucked");
+
+    if ($sum >= "3") {
+      echo("You fucked");
+    } elseif ($sum > 1) {
+      echo("You might be fucked");
+    } else {
+      echo ("You ain't fucked");
+    }
+    
   }
 ?>
 
