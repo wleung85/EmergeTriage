@@ -31,7 +31,7 @@ function showPosition(position) {
 
       var request = {
       	location: myLatlng,
-      	radius: '500',
+      	radius: '1000',
       	type: ['hospital'],
       	keyword: ['emergency room', 'hospital']
       };
@@ -40,17 +40,25 @@ function showPosition(position) {
       service.nearbySearch(request, callback);
 }
 
-function callback(results,status) {
+function callback(nearby,status) {
 	if(status==google.maps.places.PlacesServiceStatus.OK){
-		for (var i = 0; i < results.length; i++){
-			var place = results[i];
-			createMarker(results[i]);
+		for (var i = 0; i < nearby.length; i++){
+            var service = new google.maps.places.PlacesService(map);
+            service.getDetails(nearby[i],callback2);
 		}
 	}
 }
 
+function callback2(POI,status) {
+    console.log(POI.formatted_address);
+    //var address = POI.formatted_address.match(/\d+/g);
+    //var zip = address[2];
+    //console.log(address[1]);
+    createMarker(POI);
+}
 
 function createMarker(place) {
+
   var placeLoc = place.geometry.location;
   
         var icon = {
@@ -67,13 +75,42 @@ function createMarker(place) {
 	title: place.name,
     position: place.geometry.location
   });
+
+  /* function initMap() {
+    var map = new google.maps.Map(document.getElementById('map'), {
+      center: {lat: -33.866, lng: 151.196},
+      zoom: 15
+    });
+  
+    var infowindow = new google.maps.InfoWindow();
+    var service = new google.maps.places.PlacesService(map);
+  
+    service.getDetails({
+      placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4'
+    }, function(place, status) {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        var marker = new google.maps.Marker({
+          map: map,
+          position: place.geometry.location
+        });
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+            'Place ID: ' + place.place_id + '<br>' +
+            place.formatted_address + '</div>');
+          infowindow.open(map, this);
+        });
+      }
+    });
+  } */
   
 
 	  
 
   google.maps.event.addListener(marker, 'click', function() {
-    infowindow.setContent(place.name);
-    infowindow.open(map, this);
+    infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
+    'Place ID: ' + place.place_id + '<br>' +
+    place.formatted_address + '</div>');
+  infowindow.open(map, this);
   });
 }
 
