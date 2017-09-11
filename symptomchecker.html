@@ -23,7 +23,6 @@
        <div class="row text-center">
             <p>Choose your symptoms:</p>
        </div>
-       <!-- TODO: use CSV instead of hardcoding -->
            <div class="container">
                 Symptoms:<br><br>
             <div id="symptomlist"></div>
@@ -57,7 +56,7 @@
         for (i=1; i < allTextLines.length - 1; i++) {
             symptomhtml += "<input type=\"checkbox\" name=\"symptom[]\" value=" + i + "> " +text[i][0] +"<br>";
         }
-        symptomhtml += "<br><input type=\"submit\">";
+        symptomhtml += "<br><input type=\"submit\"></form>";
 
         x.innerHTML = symptomhtml;
     }

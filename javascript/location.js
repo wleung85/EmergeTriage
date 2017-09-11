@@ -101,10 +101,9 @@ function createMarker(place) {
         });
       }
     });
-  } */
-  
+  } */	  
 
-	  
+
 
   google.maps.event.addListener(marker, 'click', function() {
     infowindow.setContent('<div><strong>' + place.name + '</strong><br>' +
@@ -129,4 +128,27 @@ function showError(error) {
             x.innerHTML = "An unknown error occurred."
             break;
     }
+}
+
+$(document).ready(function() {
+    console.log("Hello world from jquery"); 
+    $.ajax({
+        type: "GET",
+        url: "resources/address_hospital.csv",
+        dataType: "text",
+        success: function(data) {findAddress(data);}
+    });
+});
+
+function findAddress(data){
+    var record_num = 5;
+    var allTextLines = data.split(/\r\n|\n/);
+    var text = [];
+
+    for (i = 0; i < allTextLines.length, i++){
+        text[i] = allTextLines[i].split(',');
+    }
+
+    var z = document.getElementById("findAddress");
+
 }
